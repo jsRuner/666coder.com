@@ -1,0 +1,500 @@
+﻿
+
+/* =============================================================
+   通用样式
+ ============================================================ */
+
+ 
+ a:focus{
+  outline: none;
+ }
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.pad-top {
+    padding-top:50px;
+}
+.pad-top-bottom {
+     padding-top:20px;
+      padding-bottom:30px;
+}
+.text-center {
+    text-align:center;
+}
+
+section {
+    padding:40px 0px 40px 0px;
+}
+p {
+    line-height:30px;
+    font-size:20px;
+    padding:0px 0px 10px 0px;
+    margin-top: 35px;
+}
+.copyrights{
+	text-indent:-9999px;
+	height:0;
+	line-height:0;
+	font-size:0;
+	overflow:hidden;
+}
+ h1 {
+font-weight: 900;
+color:rgb(255, 15, 101);
+text-align: center;
+}
+ .color-strip {
+  margin: 0 auto;
+     max-width:230px;
+height: 2px;
+border-top: 0;
+background: #c4e17f;
+border-radius: 5px;
+background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+
+}
+
+.choice {
+  margin-right: 0px;
+}
+/* =============================================================
+  按钮组件样式
+ ============================================================ */
+.custom-btn-one {
+    color: #fff;
+   background-color:rgba(0, 0, 0, 0.70);
+   border-color: rgb(255, 15, 101);
+}
+    .custom-btn-one:hover {
+         color: #fff;
+        background-color:rgba(0, 0, 0, 0.40);
+    }
+    .btn-style-two {
+    color: #fff;
+background-color: #5bc0de;
+border-color: #929292;
+border-radius: 25px;
+
+}
+.btn-style-two:hover {
+    color: #fff;
+}
+
+ .btn-style-three {
+    color: #fff;
+background-color: #3BAD72;
+border-color: #44EBB5;
+border-radius: 0px!important;
+-webkit-border-radius:  0px!important;
+-moz-border-radius:  0px!important;
+}
+.btn-style-three:hover {
+    color: #fff;
+}
+/* =============================================================
+  'home'组件样式
+ ============================================================ */
+
+
+#home-sec {
+    
+    background: url(../img/home.jpg) no-repeat center center;
+padding: 0;
+-webkit-background-size: cover;
+background-size: cover;
+background-attachment: fixed;
+color:#fff;
+
+
+}
+    #home-sec .overlay {
+        padding-top:100px;
+        background:rgba(0, 0, 0, 0.80);
+        min-height:790px;
+    }.chart {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 120px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+    text-align: center;
+}
+.chart canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+ 
+}
+.percent {
+  display: inline-block;
+  line-height: 150px;
+  z-index: 2;
+  font-size: 2em;
+}
+.percent:after {
+  content: '%';
+  margin-left: 0.1em;
+  font-size: 1em;
+}
+    
+.board{
+   width: 85%;
+margin: 0px auto;
+}
+.board .nav-tabs {
+    position: relative;
+    margin: 40px auto;
+    margin-bottom: 0;
+    box-sizing: border-box;
+
+}
+ #home-sec .main-img {
+     
+     max-height:200px;
+   border:5px solid rgb(255, 15, 101);
+  cursor:pointer;
+  margin-top: 20px;
+}
+ #home-sec .main-img:hover {
+  cursor:pointer;
+}
+    #home-sec a,#home a:hover {
+        text-decoration:none;
+    }
+
+ 
+
+#home-sec h1 {
+font-weight: 900;
+padding: 20px 0px 0px 0px;
+}
+#home-sec h2 {
+font-weight: 400;
+padding: 0px 0px 30px 0px;
+color:#fff;
+}
+#home-sec h3 {
+padding: 5px 0px;
+
+font-weight:800;
+}
+    #home-sec h4 {
+font-weight: 600;
+
+padding-top: 20px;
+}
+    #home-sec small {
+        color:#fff;
+    }
+.icon-round {
+font-size: 30px;
+height: 60px;
+width: 60px;
+line-height: 60px;
+color: #fff;
+border: 2px solid #fff;
+text-align: center;
+border-radius: 50%;
+-webkit-transition: 400ms;
+-moz-transition: 400ms;
+-o-transition: 400ms;
+transition: 400ms;
+cursor: pointer;
+}
+    .icon-round:hover {
+        background-color:rgb(255, 15, 101);
+    }
+
+.icon-round-active {
+      background-color:rgb(255, 15, 101);
+}
+#home-sec .btn-lg {
+  
+  margin-bottom: 20px;
+}
+    /* =============================================================
+  '关于'组件样式
+ ============================================================ */
+    
+   
+#about-sec .social-icon {
+    padding:10px 0px 30px 0px;
+}
+    #about-sec .social-icon a > img {
+        padding:5px;
+    }
+
+
+/* =============================================================
+  '兴趣'组件样式
+ ============================================================ */
+#interest-sec .social-icon {
+    padding:30px 0px 30px 0px;
+}
+  
+   #interest-sec {
+    
+    background: url(../img/hire.jpg) no-repeat center center;
+padding: 0;
+-webkit-background-size: cover;
+background-size: cover;
+color:#fff;
+background-attachment: fixed;
+}
+    #interest-sec .overlay {
+        padding-top:50px;
+        
+min-height: 450px;
+    }
+
+
+p.narrow{
+    margin: 10px auto;
+    text-transform: uppercase;
+}
+
+.liner{
+    height: 2px;
+    background: #ddd;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+}
+.board .tab-content span {
+    display:block;
+}
+.board .tab-content i {
+    color: rgb(255, 15, 101);
+     margin-right: 15px;
+     margin-left: 15px;
+     font-style:normal;
+}
+span.round-tabs{
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100px;
+    background: white;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+
+span.round-tabs.one{
+    color: rgb(34, 194, 34);
+    border: 2px solid rgb(34, 194, 34);
+}
+
+.board li.active span.round-tabs.one{
+    background: #fff !important;
+    border: 2px solid #ddd;
+    color: rgb(34, 194, 34);
+}
+
+.board span.round-tabs.two{
+    color: #febe29;
+    border: 2px solid #febe29;
+}
+
+.board li.active span.round-tabs.two{
+    background: #fff !important;
+    border: 2px solid #ddd;
+    color: #febe29;
+}
+
+span.round-tabs.three{
+    color: #3e5e9a;border: 2px solid #3e5e9a;
+}
+
+.board li.active span.round-tabs.three{
+    background: #fff !important;
+    border: 2px solid #ddd;
+    color: #3e5e9a;
+}
+
+span.round-tabs.four{
+    color: #f1685e;border: 2px solid #f1685e;
+}
+
+.board li.active span.round-tabs.four{
+    background: #fff !important;
+    border: 2px solid #ddd;
+    color: #f1685e;
+}
+
+span.round-tabs.five{
+    color: #999;border: 2px solid #999;
+}
+
+.board li.active span.round-tabs.five{
+    background: #fff !important;
+    border: 2px solid #ddd;
+    color: #999;
+}
+
+.nav-tabs > li.active > a span.round-tabs{
+    background: #fafafa;
+}
+.nav-tabs > li {
+    width: 20%;
+}
+
+.board li:after {
+    content: " ";
+    position: absolute;
+    left: 45%;
+   opacity:0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: rgb(255, 15, 101)!important;
+    transition:0.1s ease-in-out;
+    
+}
+.board li.active:after {
+    content: " ";
+    position: absolute;
+    left: 45%;
+   opacity:1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #ddd;
+    
+}
+.nav-tabs > li a{
+   width: 70px;
+   height: 70px;
+   margin: 20px auto;
+   border-radius: 100%;
+   padding: 0;
+}
+
+.nav-tabs > li a:hover{
+    background: transparent;
+}
+
+.tab-content{
+}
+.tab-pane{
+   position: relative;
+padding-top: 25px;
+}
+.tab-content .head{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    padding-bottom: 3px;
+}
+.btn-outline-rounded{
+    padding: 10px 40px;
+    margin: 20px 0;
+    border: 2px solid transparent;
+    border-radius: 25px;
+}
+
+.btn.green{
+    background-color:#5cb85c;
+    color: #ffffff;
+}
+
+@media( max-width : 585px ){
+    
+    .board {
+width: 90%;
+height:auto !important;
+}
+    span.round-tabs {
+        font-size:16px;
+width: 50px;
+height: 50px;
+line-height: 50px;
+    }
+    .tab-content .head{
+        font-size:20px;
+        }
+    .nav-tabs > li a {
+width: 50px;
+height: 50px;
+line-height:50px;
+}
+
+.board li.active:after {
+content: " ";
+position: absolute;
+left: 35%;
+}
+
+.btn-outline-rounded {
+    padding:12px 20px;
+    }
+}
+
+
+  /*=====================================
+ '技术'组件样式
+    ===================================*/
+
+
+#tec-sec {
+    
+    background: url(../img/testi.jpg) no-repeat center center;
+padding: 0;
+-webkit-background-size: cover;
+background-size: cover;
+background-attachment: fixed;
+color:#fff;
+
+}
+    #tec-sec  .overlay {
+       padding-top: 60px;
+background: rgba(0, 0, 0, 0.80);
+min-height: 400px;
+    }
+    #tec-sec h4 {
+        line-height:40px;
+
+    }
+    #tec-sec i {
+        padding:5px;
+    }
+    
+   
+
+ /*=====================================
+   '回到顶部'组件样式 
+    ===================================*/
+a.scrollup {
+background: rgb(255, 15, 101);
+height: 32px;
+width: 32px;
+color: #fff;
+font-size: 18px;
+line-height: 32px;
+text-align: center;
+text-decoration: none;
+position: fixed;
+bottom: 10px;
+right: 10px;
+z-index: 9999;
+opacity:0.7;
+}

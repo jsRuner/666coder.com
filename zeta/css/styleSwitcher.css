@@ -1,0 +1,69 @@
+﻿
+
+/*=====================================
+  THEME SWITCHER STYLES 
+   ===================================*/
+.switcher {
+    width:50px;
+    padding:10px;
+    position:fixed;
+    z-index:2000;
+    top:90px;
+    right:0;
+    background-color:#fff;
+    -webkit-transition:all .4s ease-in-out;
+    -moz-transition:all .4s ease-in-out;
+    -ms-transition:all .4s ease-in-out;
+    -o-transition:all .4s ease-in-out;
+    transition:all .4s ease-in-out;
+	color:#000000;
+}
+   
+.switcher #switch-panel {
+    position:absolute;
+    right:-34px;
+    top:15px;
+    width:34px;
+    height:38px;
+    z-index:1990;
+    display:block;
+    background-color:#fff;
+	margin-left:0;
+    cursor: pointer;
+}
+.switcher #switch-panel i {
+    font-size: 20px;
+    line-height: 40px;
+    padding-left:5px;
+    color:#000;
+}
+.switcher .colors-list {
+    margin:0;
+    padding:0;
+}
+.switcher .colors-list li {
+    float:left;
+    display:block;
+    margin-bottom:2px;
+    margin-right:6px;
+}
+.switcher .colors-list li a {
+    display:inline-block;
+    width:24px;
+    height:24px;
+    cursor: pointer;
+}
+.switcher .colors-list a.pink {
+    background-color:rgb(255, 5, 85);
+}
+.switcher .colors-list a.green {
+    background-color:#00ADAD;
+}
+.switcher .colors-list a.blue {
+    background-color:#2549BB;
+}
+.switcher .colors-list a.brown {
+    background-color:#9B8E00;
+}
+
+
