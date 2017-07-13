@@ -1,0 +1,121 @@
+@charset "utf-8";
+*{ padding:0; margin:0;}
+html{ overflow-x:hidden;}
+body{ background: #f0f0f0; font-family: "微软雅黑"; font-size: 14px;}
+body img{border:0;width:100%;display: block;}
+body span img{border:0;width:100%;margin: 0 auto;display: block;}
+li{ list-style:none;}
+a{ color:#262626; cursor:pointer; text-decoration:none;}
+a:hover{ color:#f00; text-decoration:none;}
+input[type="button"], input[type="submit"], input[type="reset"],textarea{-webkit-appearance: none; box-shadow: none;} 
+.居中{text-align: center;}
+.外边距居中{width: 100%;margin: auto;}
+.百分之五{width: 5%;}
+.百分之十{width: 10%;}
+.百分之十五{width:15%;}
+.百分之廿{width: 20%;}
+.百分之廿五{width: 25%;}
+.百分之卅{width: 30%;}
+.百分之卅五{width: 35%;}
+.百分之卌{width: 40%;}
+.百分之卌五{width: 45%;}
+.百分之五十{width: 50%;}
+.百分之五十五{width: 50%;}
+.百分之六十{width: 60%;}
+.百分之六十五{width: 65%;}
+.百分之七十{width: 70%;}
+.百分之七十五{width: 75%;}
+.百分之八十{width: 80%;}
+.百分之八十五{width: 85%;}
+.百分之九十{width: 90%;}
+.百分之九十五{width: 95%;}
+.百分之百{width: 100%;}
+.缓进{-webkit-transition: all .4s linear;-moz-transition: all .4s linear;-ms-transition: all .4s linear;transition: all .4s linear;}
+.🙄:hover, .😄:hover, .🌝:hover, .😳:hover, .😕:hover, .😤:hover, .灰色:hover{-webkit-transition: all .4s linear;-moz-transition: all .4s linear;-ms-transition: all .4s linear;transition: all .4s linear;}
+.🙄{color: #ffffff;}
+.🙄:hover{color: #6f6f6f;}
+.😄{color: #265a88;}
+.😄:hover{color: #1f415f;}
+.🌝{color: #419641;}
+.🌝:hover{color: #2d692d;}
+.😳{color: #2aabd2;}
+.😳:hover{color: #1c7590;}
+.😕{color: #eb9316;}
+.😕:hover{color: #ab6b11;}
+.😤{color: #e23530 ;}
+.😤:hover{color: #a02522 ;}
+.灰色{color: #6F6F6F;}
+.灰色:hover{color: #6F6F6F;}
+.细{font-weight: 100;}
+.略细{font-weight: 400;}
+.粗{font-weight: 600;}
+.加粗{font-weight: 900;}
+.相对定位{position: relative;}
+.绝对定位{position: absolute;}
+.清除浮动{zoom: 1;}
+.清除浮动:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.居右{float:right}
+.居左{float: left;}
+.居中{text-align: center;}
+.百分比大{width: 100%;}
+.百分比次大{width: 100%;}
+.百分比中{width: 100%;}
+.百分比次中{width: 100%;}
+.百分比小{width: 100%;}
+.百分比微小{width: 100%;}
+.百分比次零{width: 0%;}
+.微软雅黑{font-family: "微软雅黑";}
+.字体小{font-size: 12px;}
+.字体小中{font-size: 16px}
+.字体中{font-size: 18px}
+.字体中大{font-size: 20px}
+.字体大{font-size: 24px}
+.字体略大{font-size: 28px}
+.字体超大{font-size: 34px;}
+.边距圆角一{border-radius: 5px;}
+.边距圆角二{border-radius: 10px;}
+.边距圆角三{border-radius: 15px;}
+.边距圆角四{border-radius: 20px;}
+.边距圆角五{border-radius: 25px;}
+.边距圆角六{border-radius: 30px;}
+.显示{display: block;}
+.不显示{display: none;}
+@keyframes 闪动 {
+    0% {
+        transform: scale(1);
+        opacity: 0;
+    }
+
+    25% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 0
+    }
+
+    75% {
+        transform: scale(1);
+        opacity: 1
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+@keyframes 大小 {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
