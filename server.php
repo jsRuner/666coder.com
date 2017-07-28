@@ -20,7 +20,12 @@ $ws->on('open', function ($ws, $request) {
 
     foreach($table as $row)
     {
-        $ws->push($request->fd, $row['content']);
+        $data = $row['content'];
+
+        echo $data."\n";
+
+
+        $ws->push($request->fd, $data);
     }
     $ws->push($request->fd, '{"from":"系统","type":"system","content":"欢迎进入北岸聊天室,随便灌水!"}');
 });
@@ -46,8 +51,12 @@ $ws->on('message', function ($ws, $frame) {
         if (count($table) >10){
             //需要挨个移动位置。
             for ($i=1;$i<=10;$i++){
-                $tmp = $table->get($i+1); // 获取指定行。
-                $table->set($i,['content'=>$tmp['content']]);
+                if($table->exist($i+1)){
+                    $tmp = $table->get($i+1); // 获取指定行。
+                    $table->set($i,['content'=>$tmp['content']]);
+                }else{
+                    $table->set($i,['content'=>"{$frame->data}"]);
+                }
             }
         }else{
             //没有超过10条则直接保存。
