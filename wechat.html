@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>北岸聊天室</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <style>
         p {
@@ -12,13 +12,21 @@
 </head>
 <body>
 <div style="width: 800px;height: 600px;margin: 30px auto;text-align: center">
-    <h1>websocket聊天室</h1>
+    <h1>北岸聊天室(简洁版)</h1>
     <div style="width: 800px;border: 1px solid gray;height: 300px;">
         <div style="width: 200px;height: 300px;float: left;text-align: left;">
             <p><span>当前在线:</span><span id="user_num">0</span></p>
             <div id="user_list" style="overflow: auto;">
 
             </div>
+           <div>
+               <h5>功能:</h5>
+               <ul>
+                   <li>普通的文字聊天</li>
+                   <li>上线下线提醒</li>
+                   <li>记录最近聊天记录</li>
+               </ul>
+           </div>
         </div>
         <div id="msg_list" style="width: 598px;border:  1px solid gray; height: 300px;overflow: scroll;float: left;">
         </div>
@@ -33,10 +41,14 @@
 <script type="text/javascript">
     // 存储用户名到全局变量,握手成功后发送给服务器
     var uname = prompt('请输入用户名', 'user' + uuid(8, 16));
-    var ws = new WebSocket("ws://60.205.202.109:9502");
+    var ws = new WebSocket("ws://127.0.0.1:9502");
+//    var ws = new WebSocket("ws://60.205.202.109:9502");
     ws.onopen = function () {
         var data = "系统消息：建立连接成功";
         listMsg(data);
+        //发送请求。告知服务器。
+        var msg = {'content':uname, 'type': 'login','from':uname};
+        sendMsg(msg);
     };
 
     /**
@@ -47,15 +59,7 @@
      * msg.content: 消息内容
      */
     ws.onmessage = function (e) {
-
-//        console.log(e.data);
-//        console.log(e.data.type);
-//
-//        var str = '{"from":"uname","type":"system","content":"hi"}';
-
         var msg = JSON.parse(e.data);
-
-//        console.log(msg.from);
         var sender, user_name, name_list, change_type;
 
         switch (msg.type) {
