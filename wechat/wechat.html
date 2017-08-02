@@ -41,8 +41,12 @@
 <script type="text/javascript">
     // 存储用户名到全局变量,握手成功后发送给服务器
     var uname = prompt('请输入用户名', 'user' + uuid(8, 16));
-    var ws = new WebSocket("ws://127.0.0.1:9502");
-//    var ws = new WebSocket("ws://60.205.202.109:9502");
+    //如果为null 则设置一个随机。
+    if (!uname){
+        uname = 'user' + uuid(8, 16);
+    }
+//    var ws = new WebSocket("ws://127.0.0.1:9502");
+    var ws = new WebSocket("ws://60.205.202.109:9502");
     ws.onopen = function () {
         var data = "系统消息：建立连接成功";
         listMsg(data);
@@ -115,6 +119,10 @@
         var content = msg_box.value;
         var reg = new RegExp("\r\n", "g");
         content = content.replace(reg, "");
+        content = content.replace(/\s/g, "");
+        if (content.length <=1){
+            return ;
+        }
         var msg = {'content': content.trim(), 'type': 'user','from':uname};
         sendMsg(msg);
         msg_box.value = '';

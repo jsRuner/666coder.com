@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>北岸聊天室</title>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">    
+    <link rel="stylesheet" type="text/css" href="css/style.css">    
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+</head>
+<body>
+<div data-role="page">
+	<div data-role="header" class="header linear-g">
+        <a href="#panel-left" data-iconpos="notext" class="glyphicon glyphicon-th-large col-xs-2 text-right"> </a>
+        <a class="text-center col-xs-8">北岸聊天室</a>
+        <a href="#panel-right" data-iconpos="notext" class="glyphicon glyphicon-user col-xs-2 text-left"> </a>
+    </div>
+    <div data-role="panel" data-position="left" data-display="push" class="list-group shortcut_menu dn linear-g" id="panel-left">
+        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-home"> </span> &nbsp;菜单1(待开发)</a>
+        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-edit"> </span> &nbsp;菜单2(待开发)</a>
+        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-list"> </span> &nbsp;菜单3(待开发)</a>
+        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-list-alt"> </span> &nbsp;菜单4(待开发)</a>
+    </div>
+    <div data-role="panel" data-position="right" data-display="push" class="user_box text-center dn linear-g" id="panel-right">
+        <div class="u_info">
+            <img class="avatar" src="images/avatar.png" alt="头像">
+            <span class="username">developer</span>
+        </div>
+        <ul class="user_menu">
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-cog"> </span> &nbsp;基本设置(待开发)</a></li>
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-lock"> </span> &nbsp;修改密码(待开发)</a></li>
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-picture"> </span> &nbsp;上传头像(待开发)</a></li>
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-off"> </span> &nbsp;安全退出(待开发)</a></li>
+        </ul>
+    </div>
+    <div data-role="content" class="container" role="main">
+        <ul class="content-reply-box mg10" style="height: 300px;overflow: scroll;">
+
+        </ul>
+        <div class="operating row text-center linear-g" style="padding-bottom: 5px">
+
+        	<div class="col-xs-8">
+                <textarea class="form-control" rows="3" id="msg_box"  onkeydown="confirm(event)"></textarea>
+            </div>
+        	<div class="col-xs-4"><a href="#" class="button" onclick="send()"><span class="glyphicon glyphicon-heart"></span> &nbsp;发送</a></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+<script type="text/javascript">
+
+    function autoHeight() {
+        var h = $(window).height();
+        h = h - 130;
+        var h_old = 300;
+        console.log(h);
+        if (h > h_old) {
+            $(".content-reply-box").css('height', h);
+        } else {
+            return false;
+        }
+    }
+
+    //生成从minNum到maxNum的随机数
+    function randomNum(minNum,maxNum){
+        switch(arguments.length){
+            case 1:
+                return parseInt(Math.random()*minNum+1,10);
+                break;
+            case 2:
+                return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
+    //格式化日期
+    Date.prototype.Format = function (fmt) {
+        var o = {
+            "y+": this.getFullYear(),
+            "M+": this.getMonth() + 1,                 //月份
+            "d+": this.getDate(),                    //日
+            "h+": this.getHours(),                   //小时
+            "m+": this.getMinutes(),                 //分
+            "s+": this.getSeconds(),                 //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S+": this.getMilliseconds()             //毫秒
+        };
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(fmt)){
+                if(k == "y+"){
+                    fmt = fmt.replace(RegExp.$1, ("" + o[k]).substr(4 - RegExp.$1.length));
+                }
+                else if(k=="S+"){
+                    var lens = RegExp.$1.length;
+                    lens = lens==1?3:lens;
+                    fmt = fmt.replace(RegExp.$1, ("00" + o[k]).substr(("" + o[k]).length - 1,lens));
+                }
+                else{
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                }
+            }
+        }
+        return fmt;
+    }
+
+
+
+	$(function(){
+		/* 
+		** 不同页面切换转场效果
+		** $.mobile.changePage ('/test.html', 'slide/pop/fade/slideup/slidedown/flip/none', false, false);
+		*/
+		$('.list-group-item,.menu a').click(function(){
+			$.mobile.changePage($(this).attr('href'), {
+				transition : 'flip', //转场效果
+				reverse : true       //默认为false,设置为true时将导致一个反方向的转场
+			});	
+		});
+
+        autoHeight()
+        $(window).resize(autoHeight);
+	});
+
+
+
+
+</script>
+
+
+<script type="text/javascript">
+    // 存储用户名到全局变量,握手成功后发送给服务器
+//    var uname = prompt('请输入用户名', '用户' + uuid(2,3));
+    var uname =  '匿名用户' + uuid(2,3);
+    var avatar_id = randomNum(1,7);
+    //如果为null 则设置一个随机。
+    if (!uname){
+        uname = 'user' + uuid(8, 16);
+    }
+    //    var ws = new WebSocket("ws://127.0.0.1:9502");
+    var ws = new WebSocket("ws://60.205.202.109:9502");
+
+    //data字符串。修改为json
+    ws.onopen = function () {
+
+        var data = "系统消息：建立连接成功";
+
+        var data=new Object();
+        data.user = "系统通知";
+        data.type = "system";
+        data.cotent = "建立连接成功";
+        listMsg(data);
+
+        //发送请求。告知服务器。
+        var msg = {'content':uname, 'type': 'login','from':uname};
+        sendMsg(msg);
+    };
+
+    /**
+     * 分析服务器返回信息
+     *
+     * msg.type : user 普通信息;system 系统信息;handshake 握手信息;login 登陆信息; logout 退出信息;
+     * msg.from : 消息来源
+     * msg.content: 消息内容
+     */
+    ws.onmessage = function (e) {
+        var msg = JSON.parse(e.data);
+        var sender, user_name, name_list, change_type;
+
+        switch (msg.type) {
+            case 'system':
+                sender = '系统消息: ';
+                break;
+            case 'user':
+                sender = msg.from + ': ';
+                break;
+            case 'handshake':
+                var user_info = {'type': 'login', 'content': uname};
+                sendMsg(user_info);
+                return;
+            case 'login':
+            case 'logout':
+                user_name = msg.content;
+                name_list = msg.user_list;
+                change_type = msg.type;
+//                dealUser(user_name, change_type, name_list);
+                return;
+        }
+
+//        var data = sender + msg.content;
+        var data=new Object();
+        data.user = msg.from;
+        data.type = "user";
+        data.content = msg.content;
+
+        listMsg(data);
+    };
+
+    ws.onerror = function () {
+//        var data = "系统消息 : 出错了,请退出重试.";
+        var data=new Object();
+        data.user = "系统通知";
+        data.type = "system";
+        data.cotent = "出错了,请退出重试";
+
+        listMsg(data);
+    };
+
+    /**
+     * 在输入框内按下回车键时发送消息
+     *
+     * @param event
+     *
+     * @returns {boolean}
+     */
+    function confirm(event) {
+        var key_num = event.keyCode;
+        if (13 == key_num) {
+            send();
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 发送并清空消息输入框内的消息
+     */
+    function send() {
+        var msg_box = document.getElementById("msg_box");
+        var content = msg_box.value;
+        var reg = new RegExp("\r\n", "g");
+        content = content.replace(reg, "");
+        content = content.replace(/\s/g, "");
+        if (content.length <=1){
+            return ;
+        }
+        var msg = {'content': content.trim(), 'type': 'user','from':uname};
+        sendMsg(msg);
+        msg_box.value = '';
+        // todo 清除换行符
+    }
+
+    /**
+     * 将消息内容添加到输出框中,并将滚动条滚动到最下方
+     */
+    function listMsg(data) {
+        var msg_list = document.getElementsByClassName("content-reply-box")[0];
+
+        var msg = document.createElement("li");
+
+        var html = '';
+
+
+        var date = new Date();
+
+        //03-08 15：30
+        var timestr = date.Format("M-d hh:mm");
+
+        //解析data。如果用户名匹配自己。则在右侧。否则左侧
+        if (data.user == uname){
+            html = '<li class="even"><a class="user" href="#"><img class="img-responsive avatar_" style="width:40px;" src="images/avatar-'+avatar_id+'.jpg" alt=""><span class="user-name">我</span></a><div class="reply-content-box"><span class="reply-time">'+timestr+'</span><div class="reply-content pr"><span class="arrow">&nbsp;</span>'+data.content+'</div></div></li>';
+        }else{
+            html = '<li class="odd"><a class="user" href="#"><img class="img-responsive avatar_" style="width: 40px" src="images/avatar-0.jpg" alt=""><span class="user-name">'+data.user+'</span></a><div class="reply-content-box"><span class="reply-time">'+timestr+'</span><div class="reply-content pr"><span class="arrow">&nbsp;</span>'+data.content+'</div></div></li>';
+        }
+
+        msg.innerHTML = html;
+
+        msg_list.appendChild(msg);
+        msg_list.scrollTop = msg_list.scrollHeight;
+    }
+
+    /**
+     * 处理用户登陆消息
+     *
+     * @param user_name 用户名
+     * @param type  login/logout
+     * @param name_list 用户列表
+     */
+    function dealUser(user_name, type, name_list) {
+        var user_list = document.getElementById("user_list");
+        var user_num = document.getElementById("user_num");
+        while(user_list.hasChildNodes()) {
+            user_list.removeChild(user_list.firstChild);
+        }
+
+        for (var index in name_list) {
+            var user = document.createElement("p");
+            user.innerHTML = name_list[index];
+            user_list.appendChild(user);
+        }
+        user_num.innerHTML = name_list.length;
+        user_list.scrollTop = user_list.scrollHeight;
+
+        var change = type == 'login' ? '上线' : '下线';
+
+//        var data = '系统消息: ' + user_name + ' 已' + change;
+        var data=new Object();
+        data.user = "系统通知";
+        data.type = "system";
+        data.cotent = user_name + ' 已' + change;
+
+        listMsg(data);
+    }
+
+    /**
+     * 将数据转为json并发送
+     * @param msg
+     */
+    function sendMsg(msg) {
+        var data = JSON.stringify(msg);
+        ws.send(data);
+    }
+
+    /**
+     * 生产一个全局唯一ID作为用户名的默认值;
+     *
+     * @param len
+     * @param radix
+     * @returns {string}
+     */
+    function uuid(len, radix) {
+        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+        var uuid = [], i;
+        radix = radix || chars.length;
+
+        if (len) {
+            for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random() * radix];
+        } else {
+            var r;
+
+            uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+            uuid[14] = '4';
+
+            for (i = 0; i < 36; i++) {
+                if (!uuid[i]) {
+                    r = 0 | Math.random() * 16;
+                    uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
+                }
+            }
+        }
+
+        return uuid.join('');
+    }
+</script>
+
+
+</body>
+</html>
