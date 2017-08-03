@@ -1,4 +1,9 @@
 <?php
+
+
+
+
+
 //最近消息列表。
 $table = new swoole_table(1024);
 $table->column('content', swoole_table::TYPE_STRING,1000);
@@ -34,6 +39,41 @@ $ws->on('message', function ($ws, $frame) {
     global  $table;
     global  $table2;
     $message = json_decode($frame->data,true);
+
+    //过滤下html标签。再组合回去。
+    $message['from'] = htmlspecialchars($message['from']);
+    $message['type'] = htmlspecialchars($message['type']);
+    $message['content'] = htmlspecialchars($message['content']);
+
+    $frame->data = json_encode($message);
+
+
+
+    //过滤输入。from  type  content 3个内容。不符合的无需响应。
+    $guestexp = '\xA1\xA1|\xAC\xA3|^Guest|^\xD3\xCE\xBF\xCD|\xB9\x43\xAB\xC8';
+    $len = strlen($message['from']);
+    if($len > 15 || $len < 3 || preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&]|$guestexp/is", $message['from'])) {
+        return FALSE;
+    }
+
+    $len = strlen($message['type']);
+    if($len > 15 || $len < 3 || preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&]|$guestexp/is", $message['type'])) {
+        return FALSE;
+    }
+
+    $len = strlen($message['content']);
+    if($len > 255 || $len < 3 || preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&]|$guestexp/is", $message['content'])) {
+        return FALSE;
+    }
+
+
+
+
+
+
+
+
+
     //记录登录的信息
     if ($message['type'] == 'login'){
         $table2->set($frame->fd,['uname'=>$message['from']]);
