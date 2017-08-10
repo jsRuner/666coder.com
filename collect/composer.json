@@ -1,0 +1,8 @@
+{
+  "require": {
+    "guzzlehttp/guzzle": "~6.0",
+    "electrolinux/phpquery": "~0.9.6",
+    "workerman/mysql": "^1.0",
+    "nette/mail":"*"
+  }
+}
